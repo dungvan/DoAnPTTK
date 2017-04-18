@@ -21,6 +21,7 @@
         <link rel="stylesheet" href="css/shortcode/shortcodes.css">  
         <link rel="stylesheet" href="css/shortcode/index.css">
         <link rel="stylesheet" href="css/plugins/hover.css">  
+                <link rel="stylesheet" href="css/shortcode/nutrition.css">
         <link rel="stylesheet" href="css/responsive.css">  
     	<link href="#" data-style="styles" rel="stylesheet"> 
         
@@ -212,7 +213,7 @@
                             </div>
                         </div>
                         <div class="form-group mt-50">
-                            <button type=" button" class="btn btn-primary mr-100">Cập Nhật</button>
+                            <button type=" button" class="btn btn-primary mr-100" data-toggle="modal" data-target="#updateNutrition">Cập Nhật</button>
                             <button type=" button" class="btn btn-primary ml-100">Xóa</button>
                         </div>
                     </div>
@@ -274,76 +275,83 @@
                 <!-- End of Footer area -->
             </div>   
             <!--End of Bg White--> 
-            <!-- Modal -->
-            <div class="modal fade " id="addTB" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-              <div class="modal-dialog modal-large" role="document">
-                <div class="modal-content modalAddTb">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="color :#008c99">&times;</span></button>
-                    <h4 class="modal-title text-center" id="myModalLabel">Thêm Thông Báo Mới</h4>
-                  </div>
-                  <div class="modal-body">
-                    <div class="form-pop-up-content"> 
-                        <form method="post" action="#">
-                            <div class="form-pop-up-content pt-25 pb-30 pl-40 pr-40"> 
-                                    <form method="post" action="#">
-                                        <div class="form-group col-sm-5 pl-0">
-                                            <label for="ngaydang" class="">Ngày Đăng</label>
-                                            <input type="date" name="ngaydang" id="ngaydang" placeholder="Name" class=" form-control">
-                                        </div>
-                                        <div class="form-group" style="clear: both;">
-                                            <label for="tieuDe">Tiêu đề</label>
-                                            <input type="text" name="tieuDe" id="tieuDe" placeholder="" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="noiDung">Nội Dung</label>
-                                            <textarea name="" class="form-control" id="noiDung"></textarea>
-                                        </div>
-                                    </form>
-                                </div>
-                        </form>
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-primary">Đăng Thông Báo</button>
-                  </div>
-                </div>
-              </div>
-            </div>
+
             <!-- Modal EditNote -->
-            <div class="modal fade " id="editTB" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal fade " id="updateNutrition" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
               <div class="modal-dialog modal-large" role="document">
                 <div class="modal-content modalAddTb">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="color :#008c99">&times;</span></button>
-                    <h4 class="modal-title text-center" id="myModalLabel">Thêm Thông Báo Mới</h4>
+                    <h4 class="modal-title text-center" id="myModalLabel">Cập Nhật Thực Đơn Tuần Mới</h4>
                   </div>
                   <div class="modal-body">
                     <div class="form-pop-up-content"> 
-                        <form method="post" action="#">
-                            <div class="form-pop-up-content pt-25 pb-30 pl-40 pr-40"> 
-                                    <form method="post" action="#">
-                                        <div class="form-group col-sm-5 pl-0">
-                                            <label for="ngaydang" class="">Ngày Đăng</label>
-                                            <input type="date" name="ngaydang" id="ngaydang" placeholder="Name" class=" form-control">
-                                        </div>
-                                        <div class="form-group" style="clear: both;">
-                                            <label for="tieuDe">Tiêu đề</label>
-                                            <input type="text" name="tieuDe" id="tieuDe" placeholder="" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="noiDung">Nội Dung</label>
-                                            <textarea name="" class="form-control" id="noiDung"></textarea>
-                                        </div>
-                                    </form>
-                                </div>
-                        </form>
+                    <div class="form-group mb-40 col-sm-3 pl-70">
+                        <select class="form-control" id="tenLop" >
+                            <option>Tuần 1</option>
+                            <option>Tuần 2</option>
+                            <option>Tuần 3</option>
+                            <option>Tuần 4</option>
+                            <option>Tuần 5</option>
+                            <option>Tuần 6</option>
+                            <option>Tuần 7</option>
+                            <option>Tuần 8</option>
+                            <option>Tuần 9</option>
+                            <option>Tuần 10</option>
+                        </select>
+                    </div>
+                            <form>
+                                <table class="col-sm-10 col-sm-offset-1 notriTable">
+                                <thead>
+                                    <tr>
+                                        <th class=""></th>
+                                        <th class="col-sm-7 pl-40" style="color: #000" >Món Ăn</th>
+                                        <th class="pl-70" style="color: #000">Ghi Chú</th>
+                                    </tr>
+                                </thead>
+
+                                    <tr>
+                                        <td><label for="tenLop">T2</label></td>
+                                        <td><input type="text" class="form-control" id="" placeholder=""></td>
+                                        <td><input type="text" class="form-control" id="" placeholder=""></td>
+                                        
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td><label for="tenLop">T3</label></td>
+                                        <td><input type="text" class="form-control" id="" placeholder=""></td>
+                                        <td><input type="text" class="form-control" id="" placeholder=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="tenLop">T4</label></td>
+                                        <td><input type="text" class="form-control" id="" placeholder=""></td>
+                                        <td><input type="text" class="form-control" id="" placeholder=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="tenLop">T5</label></td>
+                                        <td><input type="text" class="form-control" id="" placeholder=""></td>
+                                        <td><input type="text" class="form-control" id="" placeholder=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="tenLop">T6</label></td>
+                                        <td><input type="text" class="form-control" id="" placeholder=""></td>
+                                        <td><input type="text" class="form-control" id="" placeholder=""></td>
+                                        
+                                    </tr>
+
+                                    <tr>
+                                        <td><label for="tenLop">T7</label></td>
+                                        <td><input type="text" class="form-control" id="" placeholder=""></td>
+                                        <td><input type="text" class="form-control" id="" placeholder=""></td>
+                                        
+                                    </tr>
+                                </table>
+                                <div class="form-group mt-50" style="clear: both;">
                     </div>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-primary">Đăng Thông Báo</button>
+                    <button type="button" class="btn btn-primary">Lưu</button>
                   </div>
                 </div>
               </div>
