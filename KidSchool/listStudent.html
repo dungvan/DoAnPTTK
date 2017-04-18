@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="css/shortcode/shortcodes.css">  
         <link rel="stylesheet" href="css/plugins/hover.css">  
         <link rel="stylesheet" href="css/responsive.css">  
-        <link rel="stylesheet" href="css/shortcode/listTeacher.css"> 
+        <link rel="stylesheet" href="css/shortcode/listStudent.css"> 
     	<link href="#" data-style="styles" rel="stylesheet"> 
         
         <!-- Modernizr JS -->
@@ -105,66 +105,84 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="section-title">
-                                    <h2>DANH SÁCH GIÁO VIÊN</h2>
+                                    <h2>DANH SÁCH HỌC SINH</h2>
                                 </div>
                             </div>
                         </div>
-                        <div class="row form-list-gv">
+                        <div class="row form-list-hs">
+                            <div class="form-group mb-60">
+                                <label for="tenLop" class="mr-60 col-sm-0 clearfix " style="float: left;">Tên Lớp</label>
+                                <select class="form-control col-sm-6 col-sm-offset-0 mr-400 " id="tenLop">
+                                    <option>Lớp Mầm 1</option>
+                                    <option>Lớp Mầm 2</option>
+                                    <option>Lớp Mầm 3</option>
+                                    <option>Lớp Mầm 4</option>
+                                    <option>Lớp Mầm 5</option>
+                                    <option>Lớp Lá 1</option>
+                                    <option>Lớp Lá 1</option>
+                                    <option>Lớp Lá 1</option>
+                                    <option>Lớp Lá 1</option>
+                                    <option>Lớp Lá 1</option>
+                                </select>
+                                 <label for="tenLop" class="mr-60 col-sm-2 clearfix" style="text-align: -webkit-left;">Tên Lớp</label>
+                                 <input type="text" name="" value="" placeholder="" class="form-control clearfix col-sm-4 ">
+                            </div>
                             <center>
                             <table class="table">
                                 <thead>
                                     <tr>
                                         <th>STT</th>
-                                        <th>Mã GV</th>
-                                        <th>Tên GV</th>
+                                        <th>Mã HS</th>
+                                        <th>Tên HS</th>
                                         <th>Nữ</th>
-                                        <th>Năm Sinh</th>
-                                        <th>GV Lớp</th>
+                                        <th>Ngày Sinh</th>
                                         <th>Chi Tiết</th>
+                                        <th>Sức Khỏe</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>1</td>
-                                        <td>GV001</td>
+                                        <td>HS001</td>
                                         <td>Nguyễn Phương Dung</td>
                                         <td><input type="checkbox" value=""></td>
-                                        <td>1995</td>
-                                        <td>Mầm 1</td>
-                                        <td><a href="editTeacher.html">Xem</a></td>
+                                        <td><input type="date" name="" value="" placeholder="" class="form-control"></td>
+                                        <td><a href="editStudent.html">Xem</a></td>
+                                        <td><a href="#">Cập Nhật</a></td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td>GV001</td>
+                                        <td>HS001</td>
                                         <td>Nguyễn Phương Dung</td>
                                         <td><input type="checkbox" value=""></td>
-                                        <td>1995</td>
-                                        <td>Mầm 1</td>
-                                        <td><a href="editTeacher.html">Xem</a></td>
+                                        <td><input type="date" name="" value="" placeholder="" class="form-control"></td>
+                                        <td><a href="editStudent.html">Xem</a></td>
+                                        <td><a href="#">Cập Nhật</a></td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td>GV001</td>
+                                        <td>HS001</td>
                                         <td>Nguyễn Phương Dung</td>
                                         <td><input type="checkbox" value=""></td>
-                                        <td>1995</td>
-                                        <td>Mầm 1</td>
-                                        <td><a href="editTeacher.html">Xem</a></td>
+                                        <td><input type="date" name="" value="" placeholder="" class="form-control"></td>
+                                        <td><a href="editStudent.html">Xem</a></td>
+                                        <td><a href="#">Cập Nhật</a></td>
                                     </tr>
                                     <tr>
                                         <td>4</td>
-                                        <td>GV001</td>
+                                        <td>HS001</td>
                                         <td>Nguyễn Phương Dung</td>
                                         <td><input type="checkbox" value=""></td>
-                                        <td>1995</td>
-                                        <td>Mầm 1</td>
-                                        <td><a href="editTeacher.html">Xem</a></td>
+                                        <td><input type="date" name="" value="" placeholder="" class="form-control"></td>
+                                        <td><a href="editStudent.html">Xem</a></td>
+                                        <td><a href="#">Cập Nhật</a></td>
                                     </tr>
                                 </tbody>
                             </table>
                             <div class="col-sm-12">
-                               <button type="button" class="btn btn-primary mr-100 ml-100">Thêm</button> 
-                               <button type="button" class="btn btn-primary  mr-100 ml-100">Xóa</button> 
+                                <button type="button" class="btn btn-primary mr-100 ml-100">Điểm Danh</button> 
+                                <button type="button" class="btn btn-primary mr-100 ml-100">Thêm HS</button> 
+                                <button type="button" class="btn btn-primary  mr-100 ml-100">Xóa</button> 
                             </div>
                             </center>
                            

@@ -1,0 +1,13 @@
+input[type="checkbox" i] {
+  height: 18px;
+}
+input[type="date" i] {
+  height: 18px;
+}
+.form-list-hs .form-control {
+	width: inherit;
+}
+.form-list-hs .form-control label{
+	text-align: -webkit-left;
+	float: left;
+}
