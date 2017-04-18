@@ -105,7 +105,7 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="section-title">
-                                    <h2>THÔNG TIN GIÁO VIÊN</h2>
+                                    <h2>CHI TIẾT HỌC SINH</h2>
                                 </div>
                             </div>
                         </div>
@@ -114,8 +114,29 @@
                             <form>
                                 <table class="col-sm-10 col-sm-offset-1">
                                     <tr>
-                                        <td><label for="nameGV">Tên Giáo Viên</label></td>
-                                        <td><input type="text" class="form-control" id="nameGV" placeholder="Ten Giao Vien"></td>
+                                        <td><label for="tenLop">Tên Lớp</label></td>
+                                        <td>  
+                                            <select class="form-control" id="tenLop">
+                                                <option>Lớp Mầm 1</option>
+                                                <option>Lớp Mầm 2</option>
+                                                <option>Lớp Mầm 3</option>
+                                                <option>Lớp Mầm 4</option>
+                                                <option>Lớp Mầm 5</option>
+                                                <option>Lớp Lá 1</option>
+                                                <option>Lớp Lá 1</option>
+                                                <option>Lớp Lá 1</option>
+                                                <option>Lớp Lá 1</option>
+                                                <option>Lớp Lá 1</option>
+                                            </select>
+                                        </td>
+                                        <td><label for="countHS">Số Lượng HS Trong Lớp</label></td>
+                                        <td><input type="text" class="form-control" id="countHS" placeholder=""></td>
+                                        
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td><label for="maHS">Mã HS</label></td>
+                                        <td><input type="text" class="form-control" id="maHS" placeholder=""></td>
                                         <td><label for="gioiTinh">Giới Tính</label></td>
                                         <td>  
                                             <select class="form-control" id="gioiTinh">
@@ -125,49 +146,22 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><label for="maGV">Mã Giáo Viên</label></td>
-                                        <td><input type="text" class="form-control" id="maGV" placeholder=""></td>
+                                        <td><label for="nameHS">Tên HS</label></td>
+                                        <td><input type="text" class="form-control" id="nameGV" placeholder="Ten Học Sinh"></td>
                                         <td><label for="ngaySinh">Ngày Sinh</label></td>
                                         <td><input type="date" class="form-control" id="nameGV" placeholder="Email"></td>
                                     </tr>
                                     <tr>
-                                        <td><label for="cmnd">CMND</label></td>
-                                        <td> <input type="text" class="form-control" id="nameGV" placeholder="CMND"></td>
-                                        <td><label for="ngayVaoTruong">Ngày Vào Trường</label></td>
-                                        <td><input type="date" class="form-control" id="ngayVaoTruong" placeholder=""></td>
-                                    </tr>
-                                    <tr>
-                                        <td><label for="maGV">Trình Độ</label></td>
-                                        <td>
-                                            
-                                            <select class="form-control" id="gioiTinh">
-                                                <option>Đại Học</option>
-                                                <option>Cao Đẳng</option>
-                                                <option>Trung Cấp Mần Non</option>
-                                              
-                                            </select>
-                                       
-                                        </td>
-                                        <td><label for="trinhDoKhac">Trình Độ Khác</label></td>
-                                        <td><input type="text" class="form-control" id="trinhDoKhac" placeholder=""></td>
-                                    </tr>
-                                    <tr>
+                                        
+                                        <td><label for="nguoiGiamHo">Người Giám Hộ</label></td>
+                                        <td><input type="text" name="" value="" id="nguoiGiamHo" class="form-control"></td>
                                         <td><label for="dienThoai">Điện Thoại</label></td>
                                         <td><input type="text" name="" value=""  id="dienThoai" class="form-control"></td>
-                                        <td><label for="quocTich">Quốc Tịch</label></td>
-                                        <td><input type="text" class="form-control" id="quocTich" placeholder=""></td>
-                                    </tr>
-                                    <tr>
-                                        <td><label for="tenChaMe">Họ Tên Cha/Mẹ</label></td>
-                                        <td><input type="text" name="" value="" id="tenChaMe" class="form-control"></td>
-                                        <td><label for="tonGiao">Tôn Giáo</label></td>
-                                        <td><input type="text" class="form-control" id="tonGiao" placeholder=""></td>
                                     </tr>
                                     <tr>
                                         <td><label for="diaChi">Địa Chỉ</label></td>
                                         <td><input type="text" name="" value="" placeholder="" class="form-control"></td>
-                                        <td><label for="queQuan">Quê Quán</label></td>
-                                        <td><input type="text" class="form-control" id="nameGV" placeholder=""></td>
+                                        
                                     </tr>
                                 </table>
                                 <div class="pr-30">
