@@ -1,0 +1,18 @@
+.single-activity .editTB{
+	float: right;
+}
+.single-activity .editTB button{
+
+	padding: 2px 10px;
+	font-size: 10px;
+	border-radius: 0px;
+	border: 0px;
+}
+.modalAddTb{
+	border-radius: 0px;
+}
+.modalAddTb .form-pop-up-content label{
+	color:#000;
+}
+.modalAddTb .form-pop-up-content textarea{
+	height:150px;

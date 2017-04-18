@@ -214,14 +214,12 @@
 .modal-dialog {
 	bottom: 0;
 	color: #ffffff;
-	height: 432px;
 	left: 0;
 	margin: auto;
 	position: absolute;
 	right: 0;
 	text-align: left;
 	top: 0;
-	width: 465px;
 }
 .modal-dialog.register{height: 555px}
 .modal-body {padding: 0}
