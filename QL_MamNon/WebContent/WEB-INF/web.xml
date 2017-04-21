@@ -1,12 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
   <display-name>QL_MamNon</display-name>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-  </welcome-file-list>
+  <servlet>
+    <servlet-name>Authentication</servlet-name>
+    <servlet-class>mamnon.model.Authentication</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Authentication</servlet-name>
+    <url-pattern>/auth</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>index</servlet-name>
+    <servlet-class>mamnon.controller.IndexController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>index</servlet-name>
+    <url-pattern>/index</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>student</servlet-name>
+    <servlet-class>mamnon.controller.StudentController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>student</servlet-name>
+    <url-pattern>/student</url-pattern>
+  </servlet-mapping>
+  
+  <context-param>
+  <description>InitPath</description>
+  <param-name>initpath</param-name>
+  <param-value>/view</param-value>
+  </context-param>
 </web-app>
