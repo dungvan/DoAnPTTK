@@ -7,7 +7,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>Authentication</servlet-name>
-    <url-pattern>/auth</url-pattern>
+    <url-pattern>/home</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>index</servlet-name>
@@ -17,8 +17,7 @@
     <servlet-name>index</servlet-name>
     <url-pattern>/index</url-pattern>
   </servlet-mapping>
-  
-   <servlet>
+  <servlet>
     <servlet-name>student</servlet-name>
     <servlet-class>mamnon.controller.StudentController</servlet-class>
   </servlet>
@@ -26,10 +25,24 @@
     <servlet-name>student</servlet-name>
     <url-pattern>/student</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>logout</servlet-name>
+    <servlet-class>mamnon.controller.LogoutController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>logout</servlet-name>
+    <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
   
-  <context-param>
-  <description>InitPath</description>
-  <param-name>initpath</param-name>
-  <param-value>/view</param-value>
-  </context-param>
+  
+   <servlet>
+    <servlet-name>teacher</servlet-name>
+    <servlet-class>mamnon.controller.TeacherController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>teacher</servlet-name>
+    <url-pattern>/editTeacher</url-pattern>
+  </servlet-mapping>
+  
+ 
 </web-app>

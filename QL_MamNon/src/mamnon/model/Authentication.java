@@ -19,7 +19,6 @@ import mamnon.database.DatabaseConnection;
 /**
  * Servlet implementation class Authentication
  */
-
 public class Authentication extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -38,7 +37,7 @@ public class Authentication extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		doExcute(request, response);
 	}
 
 	/**
@@ -49,6 +48,11 @@ public class Authentication extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
+		doExcute(request, response);
+	}
+	
+	protected void doExcute(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String id = (String) request.getParameter("ID");
 		String password = (String) request.getParameter("password");
 
@@ -58,21 +62,24 @@ public class Authentication extends HttpServlet {
 				
 				HttpSession session = request.getSession();
 				session.setAttribute("ID", id);
+				session.setAttribute("power", "student");
 				session.setMaxInactiveInterval(30);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("view/index.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/index");
 				dispatcher.forward(request, response);
 
 			} else if (id.startsWith("GV")) {
 
 				HttpSession session = request.getSession();
 				session.setAttribute("ID", id);
+
+				session.setAttribute("power", "teacher");
 				session.setMaxInactiveInterval(30);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("student");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/index");
 				dispatcher.forward(request, response);
 			}
 		} else {
 
-			response.sendRedirect("view/index.jsp");
+			request.getRequestDispatcher("/index").forward(request, response);;
 
 		}
 

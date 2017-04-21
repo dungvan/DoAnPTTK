@@ -19,7 +19,6 @@ import mamnon.managerment_class.TeacherProfile;
 /**
  * Servlet implementation class TeacherController
  */
-@WebServlet("/TeacherController")
 public class TeacherController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -37,7 +36,7 @@ public class TeacherController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+doExcecute(request, response);
 	}
 
 	/**
@@ -46,43 +45,47 @@ public class TeacherController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		try {
-			HttpSession session = request.getSession();
-			DatabaseConnection.getConnection();
-			ResultSet rs = DatabaseConnection
-					.getResultSet("select * from giaovien where IDHS='" + session.getAttribute("ID") + "'");
+		doExcecute(request, response);
+	}
+	
+	protected void doExcecute(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+			try {
+				HttpSession session = request.getSession();
+				DatabaseConnection.getConnection();
+				ResultSet rs = DatabaseConnection
+						.getResultSet("select * from giaovien where IDGV='" + session.getAttribute("ID") + "'");
 
-			while (rs.next()) {
-				TeacherProfile teacher = new TeacherProfile();
-				teacher.setId(rs.getString(1));
-				teacher.setName(rs.getString(2));
-				teacher.setBirthday(rs.getString(3));
-				teacher.setGender(Byte.parseByte(rs.getString(4)));
-				teacher.setParent(rs.getString(5));
-				teacher.setAddress(rs.getString(6));
-				teacher.setPhone(rs.getString(7));
-
-				DatabaseConnection.closeQuietly();
-				session.setAttribute("user", teacher);
-
-				RequestDispatcher dispatcher = request.getRequestDispatcher("view/student/student.jsp");
+				while (rs.next()) {
+					TeacherProfile teacher = new TeacherProfile();
+					teacher.setId(rs.getString(1));
+					teacher.setName(rs.getString(2));
+					teacher.setBirthday(rs.getString(3));
+					teacher.setGender(Byte.parseByte(rs.getString(4)));
+					teacher.setParent(rs.getString(11));
+					teacher.setAddress(rs.getString(12));
+					teacher.setPhone(rs.getString(9));
+					teacher.setLevel(rs.getString(8));
+					teacher.setNationalID(rs.getString(6));
+					teacher.setReligion(rs.getString(10));
+					teacher.setNationality(rs.getString(7));
+					session.setAttribute("user", teacher);
+				}
+				RequestDispatcher dispatcher = request.getRequestDispatcher("view/teacher/editTeacher.jsp");
 				dispatcher.forward(request, response);
-				return;
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InstantiationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
 	}
 
 }

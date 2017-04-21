@@ -1,24 +1,24 @@
 package mamnon.controller;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import mamnon.managerment_class.AttributeManagerment;
+
 /**
- * Servlet implementation class IndexController
+ * Servlet implementation class LogoutController
  */
-public class IndexController extends HttpServlet {
+public class LogoutController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public IndexController() {
+    public LogoutController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,20 +28,15 @@ public class IndexController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		toIndex(request, response);
-	}
+			}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		toIndex(request, response);
-	}
-	
-	private void toIndex(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		response.sendRedirect("view/index.jsp");
+		request.getSession().invalidate();
+		request.getRequestDispatcher("home").forward(request, response);
 	}
 
 }

@@ -1,5 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@page import="mamnon.database.DatabaseConnection"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+<%@ page import="mamnon.managerment_class.AttributeManagerment"%>
+<%@ page import="mamnon.managerment_class.StudentProfile"%>
+<%@ page import="java.sql.ResultSet"%>
+<%@ page import="java.sql.Connection"%>
+<%@ page import="java.sql.Statement"%>
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
@@ -19,13 +25,18 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- All css files are included here
         ============================================ -->
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap.min.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/core.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/style.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/shortcode/shortcodes.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/shortcode/index.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/plugins/hover.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/responsive.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/bootstrap.min.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/core.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/style.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/shortcode/shortcodes.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/shortcode/index.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/plugins/hover.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/responsive.css">
 <link href="#" data-style="styles" rel="stylesheet">
 
 <!-- Modernizr JS -->
@@ -51,7 +62,7 @@
 										if (request.getSession().getAttribute("ID") == null) {
 									%>
 									<form class="form-inline"
-										action="<%=request.getContextPath()%>/auth" method="post">
+										action="<%=request.getContextPath()%>/home" method="post">
 										<div class="form-group">
 											<label class="sr-only" for="exampleInputEmail3">ID</label> <input
 												type="ID" name="ID" class="form-control input-sm"
@@ -66,10 +77,17 @@
 										<button type="submit" class="btn btn-default btn-sm">Sign
 											in</button>
 									</form>
-									<%} else {%>
-									<input type="button" class="btn btn-default btn-sm" value="log out"  onclick = <% request.getSession().invalidate(); %>>
-
-									<%}%>
+									<%
+										} else {
+									%>
+									<form action="<%=request.getContextPath()%>/logout"
+										method="post">
+										<input type="submit" class="btn btn-default btn-sm"
+											value="log out">
+									</form>
+									<%
+										}
+									%>
 								</div>
 
 							</div>
@@ -80,7 +98,8 @@
 							<div class="row">
 								<div class="col-sm-3">
 									<div class="logo">
-										<a href="index.html"><img src="images/logo/logo.png"
+										<a href="index.html"><img
+											src="<%=request.getContextPath()%>/images/logo/logo.png"
 											alt="kidschool" /></a>
 									</div>
 								</div>
@@ -98,14 +117,65 @@
 									</div>
 									<div id="navigation" class="main-menu">
 										<nav>
+											<%
+												if (request.getSession().getAttribute("power") != null
+														&& request.getSession().getAttribute("power").equals("student")) {
+											%>
 											<ul class="navigation-menu">
-												<li><a href="index.html">Thông Tin Thông Báo </a></li>
-												<li><a href="editTeacher.html">Điều Chỉnh Hồ Sơ</a></li>
-												<li><a href="listStudent.html">Danh Sách Học Sinh</a></li>
+												<li><a href="<%=request.getContextPath()%>/home">Thông
+														Tin Thông Báo </a></li>
+												<li><a
+													href="<%=request.getContextPath()%>/editStudent.jsp">Điều
+														Chỉnh Hồ Sơ</a></li>
+												<li><a
+													href="<%=request.getContextPath()%>/contact.html">Thống
+														Kê</a></li>
+											</ul>
+											<%
+												} else if (request.getSession().getAttribute("power") != null
+														&& request.getSession().getAttribute("power").equals("teacher")) {
+											%>
+											<ul class="navigation-menu">
+												<li><a href="<%=request.getContextPath()%>/home">Thông
+														Tin Thông Báo </a></li>
+												<li><a
+													href="<%=request.getContextPath()%>/editTeacher">Điều
+														Chỉnh Hồ Sơ</a></li>
+												<li><a
+													href="<%=request.getContextPath()%>/listStudent.html">Danh
+														Sách Học Sinh</a></li>
+											</ul>
+											<%
+												} else if (request.getSession().getAttribute("power") != null
+														&& request.getSession().getAttribute("power").equals("manager")) {
+											%>
+											<ul class="navigation-menu">
+												<li><a href="<%=request.getContextPath()%>/home">Thông
+														Tin Thông Báo </a></li>
+												<li><a
+													href="<%=request.getContextPath()%>/editTeacher.html">Điều
+														Chỉnh Hồ Sơ</a></li>
+												<li><a
+													href="<%=request.getContextPath()%>/listStudent.html">Danh
+														Sách Học Sinh</a></li>
 												<li class="hidden-sm"><a href="listTeacher.html">Danh
 														Sách Giáo Viên</a></li>
-												<li><a href="event.html">Chế Độ Dinh Dưỡng</a></li>
-												<li><a href="contact.html">Thống Kê</a></li>
+												<li><a href="<%=request.getContextPath()%>/event.html">Chế
+														Độ Dinh Dưỡng</a></li>
+												<li><a
+													href="<%=request.getContextPath()%>/contact.html">Thống
+														Kê</a></li>
+											</ul>
+											<%
+												} else {
+											%>
+											<ul class="navigation-menu">
+												<li><a href="<%=request.getContextPath()%>/home">Thông
+														Tin Thông Báo </a></li>
+											</ul>
+											<%
+												}
+											%>
 											</ul>
 										</nav>
 									</div>
@@ -135,62 +205,40 @@
 								style="float: left" href="#" data-toggle="modal"
 								data-target="#addTB">Thêm Thông Báo Mới</button>
 						</div>
+						<%
+							Connection conn = DatabaseConnection.getConnection();
+						Statement stmt = conn.createStatement();
+						ResultSet rs = stmt.executeQuery("select * from thongbao");
+						int i = 0;
+							while (rs.next()&&i<10) {
+								i++;
+						%>
 						<div class="col-md-11 col-sm-11 col-xs-12">
 							<div class="single-activity mb-2">
 								<div class="activity-content">
 									<h3>
-										<a href="#">Thông Báo Nghỉ Học</a>
+										<a href="#"><%=rs.getString("TieuDe")%></a>
 									</h3>
-									<p>Nhà trẻ thông báo đến phụ huynh, Tất cả các lớp sẽ được
-										nghỉ học vào 20/04/2017</p>
+									<p>
+										<i><%=rs.getString("Date")%></i>
+									</p>
+									<p><%=rs.getString("NoiDung")%></p>
 								</div>
 								<div class="editTB">
+
 									<button type="button" class="btn btn-default ml-20"
 										style="float: left" data-toggle="modal" data-target="#editTB">Sửa</button>
 									<button type="button" class="btn btn-default ml-20"
 										style="float: left">Xóa</button>
-								</div>
-							</div>
-							<div class="single-activity mb-2">
-								<div class="activity-content">
-									<h3>
-										<a href="#">Thông báo nộp học phí</a>
-									</h3>
-									<p>TNhà trẻ thông báo đến phụ huynh nhanh chóng hoàn thành
-										các khoản học phí kỳ 2 năm 2017</p>
-								</div>
-								<div class="editTB">
-									<button type="button" class="btn btn-default ml-20"
-										style="float: left" data-toggle="modal" data-target="#editTB">Sửa</button>
-									<button type="button" class="btn btn-default ml-20"
-										style="float: left">Xóa</button>
-								</div>
-							</div>
-							<div class="single-activity mb-2">
-								<div class="activity-content">
-									<h3>
-										<a href="#">Thông Báo Tránh Bão</a>
-									</h3>
-									<p>Nhà Trẻ cho nghỉ học để tránh bão</p>
-								</div>
-								<div class="editTB">
-									<button type="button" class="btn btn-default ml-20"
-										style="float: left" data-toggle="modal" data-target="#editTB">Sửa</button>
-									<button type="button" class="btn btn-default ml-20"
-										style="float: left">Xóa</button>
-								</div>
-							</div>
-							<div class="single-activity mb-2">
-								<div class="activity-content">
-									<h3>
-										<a href="#">Thông Báo Tuyên Giáo Viên</a>
-									</h3>
-									<p>Nhà trẻ tiến hành tuyển giáo viên mần non</p>
 								</div>
 							</div>
 						</div>
-
-
+						<%
+							}
+							rs.close();
+							stmt.close();
+							DatabaseConnection.closeQuietly();
+						%>
 					</div>
 				</div>
 			</div>
@@ -210,7 +258,8 @@
 						<div class="col-md-4 hidden-sm hidden-xs">
 							<div class="single-activity">
 								<div class="activity-icon">
-									<img src="images/activity/6.png" alt="activity">
+									<img src="<%=request.getContextPath()%>/images/activity/6.png"
+										alt="activity">
 								</div>
 								<div class="activity-content">
 									<h3>
@@ -226,7 +275,8 @@
 						<div class="col-md-4 hidden-sm hidden-xs">
 							<div class="single-activity">
 								<div class="activity-icon">
-									<img src="images/activity/6.png" alt="activity">
+									<img src="<%=request.getContextPath()%>/images/activity/6.png"
+										alt="activity">
 								</div>
 								<div class="activity-content">
 									<h3>
@@ -242,7 +292,8 @@
 						<div class="col-md-4 hidden-sm hidden-xs">
 							<div class="single-activity">
 								<div class="activity-icon">
-									<img src="images/activity/6.png" alt="activity">
+									<img src="<%=request.getContextPath()%>/images/activity/6.png"
+										alt="activity">
 								</div>
 								<div class="activity-content">
 									<h3>
@@ -281,9 +332,12 @@
 									<h3>Truy cập nhanh</h3>
 									<nav>
 										<ul>
-											<li><a href="#">Về chúng tôi</a></li>
-											<li><a href="#">Lớp học của chúng tôi</a></li>
-											<li><a href="#">Liên lạc với chúng tôi</a></li>
+											<li><a href="<%=request.getContextPath()%>/#">Về
+													chúng tôi</a></li>
+											<li><a href="<%=request.getContextPath()%>/#">Lớp
+													học của chúng tôi</a></li>
+											<li><a href="<%=request.getContextPath()%>/#">Liên
+													lạc với chúng tôi</a></li>
 										</ul>
 									</nav>
 								</div>
